@@ -1,0 +1,44 @@
+syntax = "proto3";
+package greeting;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/khulnasoft-lab/go-plugin/examples/host-functions/greeting";
+
+// The greeting service definition.
+// go:plugin type=plugin version=1
+service Greeter {
+  // Sends a greeting
+  rpc Greet(GreetRequest) returns (GreetReply) {}
+}
+
+// The request message containing the user's name.
+message GreetRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message GreetReply {
+  string message = 1;
+}
+
+// The host functions embedded into the plugin
+// go:plugin type=host
+service HostFunctions {
+  // Sends a HTTP GET request
+  rpc HttpGet(HttpGetRequest) returns (HttpGetResponse) {}
+  // Shows a log message
+  rpc Log(LogRequest) returns (google.protobuf.Empty) {}
+}
+
+message HttpGetRequest {
+  string url = 1;
+}
+
+message HttpGetResponse {
+  bytes response = 1;
+}
+
+message LogRequest {
+  string message = 1;
+}
