@@ -1,5 +1,5 @@
 // Copyright 2019 The Go Authors. All rights reserved.
-// Copyright 2022 Md Sulaiman. All rights reserved.
+// Copyright 2023 KhulnaSoft Lab. All rights reserved.
 
 package gen
 

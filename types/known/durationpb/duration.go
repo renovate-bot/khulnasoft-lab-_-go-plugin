@@ -1,6 +1,6 @@
 // Protocol Buffers - Google's data interchange format
 // Copyright 2008 Google Inc.  All rights reserved.
-// Copyright 2022 Md Sulaiman.  All rights reserved.
+// Copyright 2023 KhulnaSoft Lab.  All rights reserved.
 // https://developers.google.com/protocol-buffers/
 
 package durationpb

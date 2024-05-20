@@ -31,9 +31,9 @@ nfpms:
     formats:
       - deb
       - rpm
-    vendor: "khulnasoft-lab"
+    vendor: "knqyf263"
     homepage: "https://github.com/khulnasoft-lab/go-plugin"
-    maintainer: "Md Sulaiman <infosulaimanbd@gmail.com>"
+    maintainer: "KhulnaSoft Lab <info@khulnasoft.com>"
     description: "Go Plugin System over WebAssembly"
     license: "MIT"
     file_name_template: "{{.ProjectName}}_{{.Version}}_{{.Os}}-{{.Arch}}"

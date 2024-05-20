@@ -352,13 +352,13 @@ A plugin author can use OCI registries such as GitHub Container registry (GHCR) 
 Push:
 
 ```shell
-$ oras push ghcr.io/khulnasoft-lab/my-plugin:latest plugin.wasm:application/vnd.module.wasm.content.layer.v1+wasm
+$ oras push ghcr.io/knqyf263/my-plugin:latest plugin.wasm:application/vnd.module.wasm.content.layer.v1+wasm
 ```
 
 Pull:
 
 ```shell
-$ oras pull ghcr.io/khulnasoft-lab/my-plugin:latest
+$ oras pull ghcr.io/knqyf263/my-plugin:latest
 ```
 
 ### Other TinyGo tips
