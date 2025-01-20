@@ -6,7 +6,7 @@ require (
 	github.com/planetscale/vtprotobuf v0.4.0
 	github.com/stretchr/testify v1.8.4
 	github.com/tetratelabs/wazero v1.7.3
-	google.golang.org/protobuf v1.30.0
+	google.golang.org/protobuf v1.33.0
 )
 
 require (
