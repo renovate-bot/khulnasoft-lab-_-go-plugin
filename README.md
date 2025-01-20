@@ -65,6 +65,23 @@ This architecture has a number of benefits:
 
 Download a binary [here][releases] and put it in `$PATH`.
 
+## Support Policy
+
+`go-plugin` is based on [Wazero][wazero] runtime and has Support Policy which follows [same rules](https://github.com/tetratelabs/wazero/?tab=readme-ov-file#go):
+> wazero follows the same version policy as Go's [Release Policy](https://go.dev/doc/devel/release): two versions. wazero will ensure these versions work and bugs are valid if there's an issue with a current Go version.
+
+For example, if current version of Go is `go1.23`, `go-plugin` is ensured to work with Go versions:
+- `go1.22`
+- `go1.23`
+
+as well as support corresponding `tinygo` versions (having most recent patch versions according to [Semver][semver]):
+- `v0.31.2`
+- `v0.32.0`
+- `v0.33.0`
+- `v0.34.0`
+
+Mapping between different versions of Go and TinyGo can be found on [Go compatibility matrix](https://tinygo.org/docs/reference/go-compat-matrix/) and [Releases](https://github.com/tinygo-org/tinygo/releases) page.
+
 ## Usage
 To use the plugin system, you must take the following steps.
 These are high-level steps that must be done.
@@ -131,6 +148,20 @@ $ protoc --go-plugin_out=. --go-plugin_opt=paths=source_relative greeting.proto
 ```
 
 Then, you will find 4 files generated in the same directory, `greet.pb.go`, `greet_host.pb.go`, `greet_plugin.pb.go` and `greet_vtproto.pb.go`.
+
+#### Optional: Skip the go protobuf generation
+
+If the plugin should be used together with other generators like
+[`protoc-gen-go`](https://pkg.go.dev/github.com/golang/protobuf/protoc-gen-go),
+then it may be helpful to skip the standard protobuf generation. This can be
+done by setting the option `disable_pb_gen=true`, for example:
+
+```shell
+$ protoc \
+    --go_opt=paths=source_relative --go_out=. \
+    --go-plugin_opt=paths=source_relative,disable_pb_gen=true --go-plugin_out=. \
+    greeting.proto
+```
 
 ### Implement a plugin
 The `Greeter` interface is generated as below in the previous step. 
@@ -352,13 +383,13 @@ A plugin author can use OCI registries such as GitHub Container registry (GHCR) 
 Push:
 
 ```shell
-$ oras push ghcr.io/knqyf263/my-plugin:latest plugin.wasm:application/vnd.module.wasm.content.layer.v1+wasm
+$ oras push ghcr.io/khulnasoft-lab/my-plugin:latest plugin.wasm:application/vnd.module.wasm.content.layer.v1+wasm
 ```
 
 Pull:
 
 ```shell
-$ oras pull ghcr.io/knqyf263/my-plugin:latest
+$ oras pull ghcr.io/khulnasoft-lab/my-plugin:latest
 ```
 
 ### Other TinyGo tips
@@ -502,3 +533,5 @@ Welcome your contribution :)
 [json-example]: https://github.com/khulnasoft-lab/go-plugin/tree/main/tests/host-functions
 
 [releases]: https://github.com/khulnasoft-lab/go-plugin/releases
+
+[semver]: https://semver.org/
